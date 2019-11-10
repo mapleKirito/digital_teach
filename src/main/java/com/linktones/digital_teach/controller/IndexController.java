@@ -32,8 +32,11 @@ public class IndexController {
                 if(cookie.getName().equals("token")){
                     String token=cookie.getValue();
                     User user = indexService.getUser(token);
-                    session.setAttribute("user",user);
-                    return "index";
+                    if(user!=null){
+                        session.setAttribute("user",user);
+                        return "index";
+                    }
+
                 }
 
             }

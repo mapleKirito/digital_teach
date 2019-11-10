@@ -2,44 +2,37 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>那条蠢鱼</title>
+    <title>数字历史馆-登陆</title>
     <!--bootstrap-->
     <link rel="stylesheet" href="css/bootstrap.min.css"/>
     <link rel="stylesheet" href="css/bootstrap-theme.min.css"/>
+
+    <!--maple-->
+    <link href="css/style.css" rel="stylesheet" />
 
     <!--引入jquery-->
     <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
     <!--bootstrap-->
     <script src="js/bootstrap.min.js"></script>
 </head>
-<body>
-    <nav class="navbar navbar-default">
-        <div class="container-fluid">
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-                    <span class="sr-only">数字历史馆</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="#">蠢鱼社区</a>
+<body class="page-login rounded">
+<a class="pl-logo"><img src="images/biglogo.png" width="221px"  /></a>
+<div class="pl-form">
+    <form action="/login" method="post">
+        <div class="pl-form-inner"  >
+            <div class="pl-input"  >
+                <input type="text" name="account" class="userinfo" placeholder="用户名"   />
+                <input type="password" name="password"  class="userinfo"  placeholder="密码"   />
+                <input class="pl-button" type="submit"  value="登录"   />
+                <i class="pl-input-people"></i>
+                <p><a href="#"  >忘记密码</a></p>
+
+                <i class="pl-input-pass"></i>
+                <p align="right">还没账号，<a href="#" class="red"  > 请注册</a></p>
+                <p id="msg" style="color: red;" th:text="${error}"></p>
             </div>
-
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav navbar-right">
-                    <li th:unless="${session.user!=null}"><a href="/login">登陆</a></li>
-                    <li th:unless="${session.user!=null}"><a href="/register">注册</a></li>
-                </ul>
-            </div><!-- /.navbar-collapse -->
-        </div><!-- /.container-fluid -->
-    </nav>
-
-    <div class="container-fluid">
-        <div class="row">
-            <div class=".col-lg-6" style="background-color: red;height: 10px;"></div>
-            <div class=".col-lg-4" style="background-color: blue;height: 10px;"></div>
         </div>
-    </div>
+    </form>
+</div>
 </body>
 </html>

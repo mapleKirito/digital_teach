@@ -20,13 +20,13 @@ public class LoginController {
     @Autowired
     private LoginService loginService;
 
-    @GetMapping("/")
+    @GetMapping
     public String login(){
         return "login";
     }
 
 
-    @PostMapping("/admin")
+    @PostMapping
     public String admin(HttpServletResponse response,
                         @RequestParam("account")String account,
                         @RequestParam("password")String password,

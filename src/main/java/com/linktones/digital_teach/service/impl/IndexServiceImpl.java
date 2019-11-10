@@ -15,7 +15,10 @@ public class IndexServiceImpl implements IndexService {
     @Override
     public User getUser(String token) {
         User user = userMapper.findByToken(token);
-        user.setPassword("Private");
-        return user;
+        if(user!=null){
+            user.setPassword("Private");
+            return user;
+        }
+        return null;
     }
 }

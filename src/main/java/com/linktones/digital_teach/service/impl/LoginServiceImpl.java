@@ -25,6 +25,7 @@ public class LoginServiceImpl implements LoginService {
             //创建token，更新user表，同时组建带token的cookie
             String token= UUID.randomUUID().toString();
             user.setToken(token);
+            user.setGmt_last_login(System.currentTimeMillis());
             userMapper.updateToken(user);
             Cookie cookie=new Cookie("token",token);
             return cookie;

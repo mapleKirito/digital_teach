@@ -18,6 +18,6 @@ public interface UserMapper {
     @Select("select * from user where account=#{account} and password=#{password}")
     User getUser(User userValue);
 
-    @Update("update user set token=#{token} where id=#{id}")
+    @Update("update user set token=#{token},gmt_last_login=#{gmt_last_login} where id=#{id}")
     void updateToken(User user);
 }

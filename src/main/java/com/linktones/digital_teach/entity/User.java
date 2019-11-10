@@ -11,6 +11,6 @@ public class User {
     private String name;
     private int level;
     private long gmt_create;
-    private long gmt_modified;
+    private long gmt_last_login;
 
 }
