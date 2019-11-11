@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>那条蠢鱼</title>
+    <title>数字历史馆-首页</title>
     <!--bootstrap-->
     <link rel="stylesheet" href="css/bootstrap.min.css" />
     <link rel="stylesheet" href="css/bootstrap-theme.min.css" />
@@ -18,12 +18,12 @@
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-                    <span class="sr-only">蠢鱼社区</span>
+                    <span class="sr-only">数字历史馆</span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#">蠢鱼社区</a>
+                <a class="navbar-brand" href="#">数字历史馆2222</a>
             </div>
 
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -34,14 +34,16 @@
                     <button type="submit" class="btn btn-default">搜索</button>
                 </form>
                 <ul class="nav navbar-nav navbar-right">
-                    <li th:unless="${session.user!=null}"><a href="/login">登陆</a></li>
+                    <li th:unless="${session.user!=null}"><a href="login">登陆</a></li>
                     <li class="dropdown" th:if="${session.user!=null}">
                         <a href="#" th:text="${session.user.getName()}" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> <span class="caret"></span></a>
                         <ul class="dropdown-menu">
-                            <li><a href="#">个人中心</a></li>
+                            <!--系统管理/个人中心-->
+                            <li th:if="${session.user.getLevel()==0}"><a href="#">系统管理</a></li>
+                            <li th:unless="${session.user.getLevel()==0}"><a href="#">个人中心</a></li>
                             <li><a href="#">消息</a></li>
                             <li role="separator" class="divider"></li>
-                            <li><a href="#">退出</a></li>
+                            <li><a href="logout">退出</a></li>
                         </ul>
                     </li>
                 </ul>

@@ -3,6 +3,7 @@ package com.linktones.digital_teach.controller;
 import com.linktones.digital_teach.entity.User;
 import com.linktones.digital_teach.mapper.UserMapper;
 import com.linktones.digital_teach.service.IndexService;
+import com.linktones.digital_teach.utils.CookieUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -26,21 +27,16 @@ public class IndexController {
     @RequestMapping("/")
     public String index(HttpSession session,
                         HttpServletRequest request){
-        Cookie[] cookies = request.getCookies();
-        if(cookies!=null){
-            for (Cookie cookie : cookies) {
-                if(cookie.getName().equals("token")){
-                    String token=cookie.getValue();
-                    User user = indexService.getUser(token);
-                    if(user!=null){
-                        session.setAttribute("user",user);
-                        return "index";
-                    }
-
-                }
-
+        Cookie cookie= CookieUtil.getCookie(request,"token");
+        if(cookie!=null){
+            String token=cookie.getValue();
+            User user = indexService.getUser(token);
+            if(user!=null){
+                session.setAttribute("user",user);
+                return "index";
             }
         }
+
         return "login";
 
     }
